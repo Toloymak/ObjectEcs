@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <AssemblyName>ObjectEcs</AssemblyName>
+        <RootNamespace>ObjectEcs</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <HintPath>..\..\..\Applications\2020.1.2f1\Unity.app\Contents\Managed\UnityEngine\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+</Project>
