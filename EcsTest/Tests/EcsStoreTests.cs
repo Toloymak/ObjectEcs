@@ -288,5 +288,39 @@ namespace EcsTest.Tests
             Assert.AreEqual(entity2, existingEntityForComponent1.FirstOrDefault());
             Assert.AreEqual(0, existingEntityForComponent2.Count);
         }
+
+        [Test]
+        public void Get_ById_ExistEntity()
+        {
+            var entity1 = new EcsEntity()
+                .AddComponent(new TestComponent1());
+
+            _ecsStoreService.AddEntity(entity1);
+
+            var actualEntity = _ecsStoreService.GetEntity(entity1.Id);
+            
+            Assert.AreEqual(entity1, actualEntity);
+        }
+        
+        [Test]
+        public void Get_ById_NoEntity()
+        {
+            var actualEntity = _ecsStoreService.GetEntity(Guid.NewGuid());
+            
+            Assert.AreEqual(null, actualEntity);
+        }
+        
+        [Test]
+        public void Get_ById_AnotherEntity()
+        {
+            var entity1 = new EcsEntity()
+                .AddComponent(new TestComponent1());
+
+            _ecsStoreService.AddEntity(entity1);
+            
+            var actualEntity = _ecsStoreService.GetEntity(Guid.NewGuid());
+            
+            Assert.AreEqual(null, actualEntity);
+        }
     }
 }

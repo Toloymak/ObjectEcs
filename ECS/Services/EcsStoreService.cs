@@ -50,7 +50,8 @@ namespace ObjectEcs.Services
         public IList<EcsEntity> GetEntities(params Type[] types)
         {
             HashSet<EcsEntity> shortestCollection = null;
-            
+
+            // Looking for smaller collection
             foreach (var type in types)
             {
                 if (!_store.EntitiesByComponents.TryGetValue(type, out var entities))
@@ -72,12 +73,8 @@ namespace ObjectEcs.Services
 
         public EcsEntity GetEntity(Guid id)
         {
-            if (_store.Entities.TryGetValue(id, out var entity))
-            {
-                return entity;
-            }
-
-            return null;
+            _store.Entities.TryGetValue(id, out var entity);
+            return entity;
         }
 
         public void RemoveEntity(EcsEntity ecsEntity)
